@@ -4,7 +4,7 @@ require "#{File.dirname(__FILE__)}/base"
 
 class Pagerduty < BaseHandler
   def region
-    @event['check']['region']
+    handler_settings['region'] || @event['check']['region'] 
   end
 
   def incident_key
