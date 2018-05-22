@@ -133,7 +133,8 @@ class Slack < BaseHandler
     http.use_ssl = true
     request = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
     request.body = msg.to_json
-    http.request request
+    res = http.request request
+    log res.inspect unless res.is_a?(Net::HTTPSuccess)
   end
 
 end
